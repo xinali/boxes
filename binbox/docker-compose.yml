@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+    binbox:
+        build: .
+        volumes:
+            - ./data:/root/data
+        networks:
+            elk:
+                ipv4_address: 172.18.1.2
+
+networks:
+    elk:
+        ipam:
+            config:
+                - driver: default
+                  subnet: 172.18.1.0/24
+                  gateway: 172.18.1.1
