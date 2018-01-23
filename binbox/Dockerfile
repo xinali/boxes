@@ -11,6 +11,9 @@ RUN apt install -y g++ gdb  gcc cmake python-capstone
 RUN git clone https://github.com/keystone-engine/keystone ~/keystone && cd ~/keystone && mkdir build  \
 		&& cd build && ../make-share.sh && make install && ldconfig
 
+# install some python packages
+RUN pip install -U pip && pip install ipython requests 
+
 # install gef requirements
 RUN pip3 install -U pip && pip3 install keystone-engine capstone unicorn ropper retdec-python 
 
@@ -27,7 +30,7 @@ RUN git clone https://github.com/pwndbg/pwndbg.git /opt/pwndbg && \
     ./setup.sh
 
 # install pwntools
-RUN pip install pwntools
+RUN apt install -y python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential && pip install pwntools
 
 # install radare2
 RUN git clone https://github.com/radare/radare2.git /opt/radare2 && \

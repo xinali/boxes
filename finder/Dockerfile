@@ -7,19 +7,12 @@ RUN apt update && apt upgrade -y && apt install -y python python-pip python3-pip
 
 RUN pip install -U pip && pip  install -y requests ipython 
 
-# sqlmap
-
-# install nmap
-RUN git clone https://github.com/nmap/nmap ~/nmap && cd ~/nmap \ 
-		&& ./configure \
-		&& make \
-		&& make install
-
 # compile masscan
 RUN set -x \
         && mkdir -p /opt/penwok \
         && git clone https://github.com/robertdavidgraham/masscan /opt/penwok && cd masscan \
         && make -j
+
 # zsh
 COPY ./configfiles/zshrc /root/.zshrc
 
