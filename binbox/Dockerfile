@@ -42,13 +42,16 @@ RUN git clone https://github.com/radare/radare2.git /opt/radare2 && \
 
 # zsh
 RUN wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/install.sh && bash /tmp/install.sh
-COPY ./configfiles/zshrc /root/.zshrc
+RUN wget https://gist.githubusercontent.com/xinali/60e6a283f9ce6e9cb6f575928e26be67/raw/7ebc737fb7a5567b80399b5c474791ef6235515d/zshrc \
+	-O ~/.zshrc
 
 # vim
-COPY ./configfiles/vimrc /root/.vimrc
+RUN wget https://gist.githubusercontent.com/xinali/e5ba9e33d2ab942d35dda7a0bfa98029/raw/d871f503e2aee014def04947d8c81c6d426769e7/vimrc \
+	-O ~/.vimrc
 
 # gdb config
-COPY ./configfiles/gdbinit /root/.gdbinit
+RUN wget https://gist.githubusercontent.com/xinali/dd52d3c289984f8f6662afecd50ce484/raw/71de5fe558257e094fc9b23b57badf68426d3e47/gdbinit \
+	-O ~/.gdbinit
 
 # set locale to en_US.UTF-8
 RUN apt install -y locales && locale-gen en_US.UTF-8

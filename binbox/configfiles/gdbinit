@@ -1,3 +1,0 @@
-source /opt/pwndbg/gdbinit.py
-source /opt/gef/gef.py
-
