@@ -39,6 +39,11 @@ RUN git clone https://github.com/radare/radare2.git /opt/radare2 && \
                 ./sys/install.sh  && \
                 make symstall
 
+# install libheap                                                                                                          
+RUN apt install -y libc6-dbg                                                                                               
+RUN git clone https://github.com/cloudburst/libheap && \                                                                   
+    pip3 install --user ./libheap/   
+
 # zsh
 RUN wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/install.sh && bash /tmp/install.sh
 RUN wget https://gist.githubusercontent.com/xinali/60e6a283f9ce6e9cb6f575928e26be67/raw/7ebc737fb7a5567b80399b5c474791ef6235515d/zshrc \

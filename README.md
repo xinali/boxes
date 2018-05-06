@@ -18,3 +18,7 @@ pwndbg
 vim/vim-plug
 zsh/oh-my-zsh
 ```
+
+## mongodb
+
+带有验证功能的mongodb docker
