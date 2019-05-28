@@ -9,14 +9,19 @@
 ```
 gcc
 gdb
+
+radare2
+
 pwntools
 gef
 peda
-radare2
-libheap
 pwndbg
-vim/vim-plug
-zsh/oh-my-zsh
+```
+
+`docker`运行需要提升权限以用于`pwntools`的`gdb.attach`
+
+```
+docker -t -i --privileged docker_image
 ```
 
 ## mongodb

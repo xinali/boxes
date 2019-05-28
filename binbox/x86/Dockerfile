@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # prequirements
 RUN apt update && apt upgrade -y && \
-    apt install -y python python-pip python3-pip git vim curl wget sudo zsh wget curl g++ gdb make cmake
+    apt install -y python python-pip python3-pip git vim curl wget sudo zsh wget curl g++ gdb make cmake tmux
 
 # install some python packages
 RUN pip install ropgadget
