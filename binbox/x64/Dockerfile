@@ -3,6 +3,7 @@ FROM ubuntu:latest
 MAINTAINER xina1i daitaomail@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
+
 # prequirements
 RUN apt update && apt upgrade -y && \
     apt install -y python python-pip python3-pip git vim curl wget sudo zsh wget curl g++ gdb make cmake
