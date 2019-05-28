@@ -26,7 +26,7 @@ RUN apt install -y python2.7 python-pip python-dev git libssl-dev libffi-dev bui
 
 # install radare2
 RUN git clone https://github.com/radare/radare2.git /opt/radare2 && \
-        cd /opt/radare2 && bash sys/install.sh
+        cd /opt/radare2 && bash sys/user.sh
 
 # get dotfiles
 RUN git clone https://github.com/xinali/dotfiles ~/.dotfiles && cd ~/.dotfiles && make
