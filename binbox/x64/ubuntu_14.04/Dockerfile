@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # prequirements
 RUN apt update && apt upgrade -y && \
-    apt install -y python python-pip python3-pip git vim curl wget sudo zsh wget curl g++ gdb make cmake tmux
+    apt install -y python python-pip python3-pip git vim curl wget sudo zsh curl g++ gdb make cmake tmux
 
 # install some python packages
 RUN pip install ropgadget
@@ -23,7 +23,9 @@ RUN git clone https://github.com/pwndbg/pwndbg.git /opt/pwndbg && \
     ./setup.sh
 
 # install pwntools
-RUN apt install -y python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential && pip install pwntools
+RUN apt install -y python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential && \
+    wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py && \
+    python /tmp/get-pip.pyt && pip2 install --upgrade pwntools
 
 # install radare2
 RUN git clone https://github.com/radare/radare2.git /opt/radare2 && \
