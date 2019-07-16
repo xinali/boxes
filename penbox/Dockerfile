@@ -3,9 +3,12 @@ FROM ubuntu:latest
 MAINTAINER xina1i daitaomail@gmail.com
 
 # prequirements
-RUN apt update && apt upgrade -y && apt install -y python python-pip python3-pip git vim curl wget sudo zsh gcc g++ make
+RUN apt update && apt install -y python python3 git vim curl wget sudo zsh gcc g++ make
 
-RUN pip install -U pip && pip  install -y requests ipython 
+# install pip2 && pip3
+RUN wget https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py \
+    && python /tmp/get-pip.py
+    && python3 /tmp/get-pip.py
 
 # sqlmap
 
@@ -25,7 +28,6 @@ COPY ./configfiles/zshrc /root/.zshrc
 
 # vim
 COPY ./configfiles/vimrc /root/.vimrc
-
 
 WORKDIR /root
 ENTRYPOINT ["/usr/bin/zsh"]

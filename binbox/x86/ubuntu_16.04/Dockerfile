@@ -12,7 +12,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip install ropgadget
 
 # install gef 
-RUN git clone https://github.com/hugsy/gef.git /opt/gef
+RUN wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 # install peda
 RUN git clone https://github.com/longld/peda.git /opt/peda
@@ -35,6 +35,11 @@ RUN git clone https://github.com/xinali/dotfiles ~/.dotfiles && cd ~/.dotfiles &
 
 # set locale to en_US.UTF-8
 RUN apt install -y locales && locale-gen en_US.UTF-8
+
+
+# initialize gdb
+echo "# source /root/.gdbinit-gef.py" > /root/.gdbinit
+echo "source /opt/pwndbg/gdbinit.py" >> /root/.gdbinit
 
 WORKDIR /root
 ENTRYPOINT ["bash"]
